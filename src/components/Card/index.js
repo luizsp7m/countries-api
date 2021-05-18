@@ -13,7 +13,7 @@ function Card({ data }) {
         <h1>{data.name}</h1>
         
         <span>
-          <b>Population: </b> {data.population}
+          <b>Population: </b> {data.population.toLocaleString('pt-BR')}
         </span>
 
         <span>

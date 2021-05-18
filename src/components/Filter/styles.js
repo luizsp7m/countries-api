@@ -13,7 +13,45 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  > input, select {
+  > div.input-group {
+    display: flex;
+    box-shadow: 0 0 1em rgba(0, 0, 0, .035);
+
+    > input {
+      border: 0;
+      outline: 0;
+      padding: 1.4rem 2rem;
+      background: var(--primary-color);
+      font-size: 1.4rem;
+      color: var(--text-color);
+      min-width: 35rem;
+      border-top-left-radius: .5rem;
+      border-bottom-left-radius: .5rem;
+
+      &::placeholder {
+        color: var(--text-color);
+        font-size: 1.4rem;
+      }
+    }
+
+    > button {
+      border: 0;
+      width: 5rem;
+      font-size: 0;
+      background: var(--primary-color);
+      border-left: 1px solid rgba(0, 0, 0, .1);
+      cursor: pointer;
+      border-top-right-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+
+      > .icon {
+        font-size: 2rem;
+        color: var(--text-color);
+      }
+    }
+  }
+
+  > select {
     border: 0;
     outline: 0;
     padding: 1.4rem 2rem;
@@ -27,10 +65,6 @@ export const Wrapper = styled.div`
       color: var(--text-color);
       font-size: 1.4rem;
     }
-  }
-
-  > input {
-    min-width: 40rem;
   }
 
   > select {

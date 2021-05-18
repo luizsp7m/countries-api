@@ -12,4 +12,15 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   gap: 2rem;
+
+  > a {
+    text-decoration: 0;
+  }
+
+  > h1.loading {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: left;
+  }
 `;

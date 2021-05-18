@@ -1,29 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Container, Wrapper } from './styles';
 
 import { FilterContext } from '../../contexts/FilterContext';
 
-function Filter() {
-  const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+import { AiOutlineSearch } from 'react-icons/ai';
 
-  const { setRegion, setName } = useContext(FilterContext);
+function Filter() {
+  const regions = ['All Regions', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+  const [name, setName] = useState('');
+  const [region, setRegion] = useState('All Regions');
+
+  const params = { name, region };
+
+  const { loadCountriesByFilter } = useContext(FilterContext);
 
   return (
     <Container>
       <Wrapper>
-        <input 
-          type="text" 
-          placeholder="Search for a country..." 
-          onChange={e => setName(e.target.value)}
-        />
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            onChange={e => setName(e.target.value)}
+          />
+
+          <button onClick={() => loadCountriesByFilter(params)}>
+            <AiOutlineSearch className="icon" />
+          </button>
+        </div>
 
         <select onChange={e => setRegion(e.target.value)}>
-        {/* <option value="" selected disabled hidden>Filter by Region</option> */}
-
-          { regions.map(region => (
+          {regions.map(region => (
             <option key={region}>{region}</option>
-          )) }
+          ))}
         </select>
       </Wrapper>
     </Container>

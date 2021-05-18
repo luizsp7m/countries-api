@@ -9,6 +9,14 @@ export const Content = styled.div`
   max-width: 1100px;
   margin: 5rem auto;
 
+  > h1.loading {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    text-align: left;
+  }
+
   > a {
     text-decoration: none;
     color: var(--text-color);

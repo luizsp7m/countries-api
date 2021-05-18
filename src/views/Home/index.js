@@ -8,72 +8,25 @@ import Card from '../../components/Card';
 
 import api from '../../services/api';
 
-import { FilterContext } from '../../contexts/FilterContext';
 import { Link } from 'react-router-dom';
 
+import { FilterContext } from '../../contexts/FilterContext';
+
 function Home() {
-  const { region, name } = useContext(FilterContext);
-
-  const [countries, setCountries] = useState();
-
-  async function loadCountries() {
-    // // https://restcountries.eu/rest/v2/
-    // // https://restcountries.eu/rest/v2/region/europe
-    // await api.get(
-    //   region === 'all' ? 'all' : `region/${region}`
-    // ).then(response => {
-    //   setCountries(response.data);
-    // });
-
-    if (!name && !region) {
-      await api.get(`all`).then(response => {
-        setCountries(response.data);
-      });
-    }
-
-    if (name && !region) {
-      await api.get(`name/${name}`).then(response => {
-        setCountries(response.data);
-      });
-    }
-
-    if (!name && region) {
-      await api.get(`region/${region}`).then(response => {
-        setCountries(response.data);
-      });
-    }
-
-    // if(name && region) {
-    //   await api.get(`name/${name}`).then(response => {
-    //     const temporary = [];
-    //     response.data.map(country => {
-    //       if(country.region === region)
-    //         temporary.push(country);
-    //     })
-    //     setCountries(temporary);
-    //   });
-    // }
-  }
-
-  useEffect(() => {
-    loadCountries();
-    console.log(name);
-  }, [region, name]);
-
-  if (!countries) return <h1>Carregando</h1>
+  const { loading, countries } = useContext(FilterContext);
 
   return (
     <Container>
       <Header />
       <Filter />
       <Content>
-        {countries.map((country, index) => (
-          <Link to={`/${country.alpha3Code}`}>
-            <Card data={country} key={index} />
+        {loading ? <h1 className="loading">Loading...</h1> : countries.map((country, index) => (
+          <Link to={`/${country.alpha3Code}`} key={index}>
+            <Card data={country} />
           </Link>
         ))}
       </Content>
-    </Container>
+    </Container >
   );
 }
 
