@@ -23,6 +23,10 @@ export const Container = styled.div`
     > h1 {
       margin-bottom: 1rem;
       font-size: 1.8rem;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     > span {

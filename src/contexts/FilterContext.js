@@ -18,30 +18,39 @@ export function FilterProvider({ children }) {
   async function loadCountriesByFilter({ name, region }) {
     if(!name && region) { // Todos os paises de determinada região
       setLoading(true);
-      await api.get(region === 'All Regions' ? '/all' : `/region/${region}`).then(response => {
+      await api.get(region === 'All' ? '/all' : `/region/${region}`).then(response => {
         setCountries(response.data);
         setLoading(false);
       });
     }
 
-    if(name && region) { // Busca por nome e região
+    if(name && region === 'All') { // Busca por nome e região
       setLoading(true);
       await api.get(`/name/${name}`).then(response => {
         setCountries(response.data);
-
-        const countryList = [];
-
-        countries.map(country => {
-          if(country.region === region) 
-            countryList.push(country);
-        })
-
-        console.log(countryList);
-
-        setCountries(countryList);
-
         setLoading(false);
-      });
+      }).catch(err => {
+        alert("Country not found");
+        setLoading(false);
+      })
+    }
+
+    if(name && region !== 'All') { // Busca por nome e região
+      setLoading(true);
+      await api.get(`/name/${name}`).then(response => {
+        const countriesList = [];
+        
+        response.data.map(country => {
+          if(country.region === region) 
+            countriesList.push(country);
+        });
+
+        setCountries(countriesList);
+        setLoading(false);
+      }).catch(err => {
+        alert("Country not found");
+        setLoading(false);
+      })
     }
   }
 

@@ -7,10 +7,10 @@ import { FilterContext } from '../../contexts/FilterContext';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 function Filter() {
-  const regions = ['All Regions', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
   const [name, setName] = useState('');
-  const [region, setRegion] = useState('All Regions');
+  const [region, setRegion] = useState('All');
 
   const params = { name, region };
 
@@ -20,15 +20,15 @@ function Filter() {
     <Container>
       <Wrapper>
         <div className="input-group">
+          <button onClick={() => loadCountriesByFilter(params)}>
+            <AiOutlineSearch className="icon" />
+          </button>
+
           <input
             type="text"
             placeholder="Search for a country..."
             onChange={e => setName(e.target.value)}
           />
-
-          <button onClick={() => loadCountriesByFilter(params)}>
-            <AiOutlineSearch className="icon" />
-          </button>
         </div>
 
         <select onChange={e => setRegion(e.target.value)}>

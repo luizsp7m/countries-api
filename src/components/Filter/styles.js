@@ -10,42 +10,40 @@ export const Wrapper = styled.div`
   margin: 3rem auto;
 
   display: flex;
-  align-items: center;
   justify-content: space-between;
 
   > div.input-group {
     display: flex;
-    box-shadow: 0 0 1em rgba(0, 0, 0, .035);
 
-    > input {
+    > button {
+      height: 4.5rem;
+      width: 4.5rem;
       border: 0;
-      outline: 0;
-      padding: 1.4rem 2rem;
       background: var(--primary-color);
-      font-size: 1.4rem;
-      color: var(--text-color);
-      min-width: 35rem;
+      font-size: 0;
       border-top-left-radius: .5rem;
       border-bottom-left-radius: .5rem;
+      cursor: pointer;
+      border-right: 1px solid rgba(0, 0, 0, .1);
+      outline: 0;
 
-      &::placeholder {
+      > .icon {
         color: var(--text-color);
-        font-size: 1.4rem;
+        font-size: 1.8rem;
       }
     }
 
-    > button {
-      border: 0;
-      width: 5rem;
-      font-size: 0;
+    > input {
       background: var(--primary-color);
-      border-left: 1px solid rgba(0, 0, 0, .1);
-      cursor: pointer;
+      color: var(--text-color);
+      border: 0;
+      outline: 0;
+      padding: 0 2rem;
+      width: 30rem;
       border-top-right-radius: .5rem;
       border-bottom-right-radius: .5rem;
 
-      > .icon {
-        font-size: 2rem;
+      &::placeholder {
         color: var(--text-color);
       }
     }
@@ -54,36 +52,28 @@ export const Wrapper = styled.div`
   > select {
     border: 0;
     outline: 0;
-    padding: 1.4rem 2rem;
+    height: 4.5rem;
+    width: 20rem;
     border-radius: .5rem;
+    padding: 0 2rem;
     background: var(--primary-color);
-    font-size: 1.4rem;
     color: var(--text-color);
-    box-shadow: 0 0 1em rgba(0, 0, 0, .035);
 
-    &::placeholder {
-      color: var(--text-color);
-      font-size: 1.4rem;
-    }
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 
-  > select {
-    min-width: 20rem;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-  }
-
-  @media(max-width: 680px) {
+  @media(max-width: 625px) {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 1rem;
 
-    > input {
-      width: 100%;
+    > div.input-group {
+      > input {
+        width: 100%;
+      }
     }
 
     > select {
-      margin-top: 2rem;
       width: 50%;
     }
   }

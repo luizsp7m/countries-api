@@ -13,15 +13,15 @@ function Card({ data }) {
         <h1>{data.name}</h1>
         
         <span>
-          <b>Population: </b> {data.population.toLocaleString('pt-BR')}
+          <b>Population: </b> { data.population ? data.population.toLocaleString('pt-BR') : '-' } 
         </span>
 
         <span>
-          <b>Region: </b> {data.region}
+          <b>Region: </b> { data.region ? data.region : '-' }
         </span>
 
         <span>
-          <b>Capital: </b> {data.capital}
+          <b>Capital: </b> { data.capital ? data.capital : '-' }
         </span>
       </div>
     </Container>

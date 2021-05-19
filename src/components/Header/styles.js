@@ -15,10 +15,11 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  > div.logo {
+  > a.logo {
     font-size: 1.8rem;
     color: var(--text-color);
     font-weight: 800;
+    text-decoration: 0;
   }
 
   > div.switch-mode {

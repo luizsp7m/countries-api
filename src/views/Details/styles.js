@@ -43,6 +43,10 @@ export const Grid = styled.div`
   align-items: center;
   margin-top: 5rem;
   grid-gap: 3rem;
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Image = styled.div`
@@ -50,6 +54,12 @@ export const Image = styled.div`
     width: 100%;
     height: 338px;
     object-fit: cover;
+  }
+
+  @media(max-width: 768px) {
+    > img {
+      height: 250px;
+    }
   }
 `;
 
@@ -109,6 +119,22 @@ export const About = styled.div`
         border-radius: .5rem;
         box-shadow: 0 0 1em rgba(0, 0, 0, .035);
         font-size: 1.4rem;
+      }
+    }
+  }
+
+  @media(max-width: 768px) {
+    > div.card-container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    > div.border-countries {
+      flex-direction: column;
+      align-items: flex-start;
+
+      > h5 {
+        margin-bottom: 2rem;
       }
     }
   }
