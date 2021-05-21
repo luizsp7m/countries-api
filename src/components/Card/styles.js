@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: var(--primary-color);
   border-radius: .5rem;
+  border: 1px solid rgba(0, 0, 0,.05);
 
   > div.flag-image {
     width: 100%;

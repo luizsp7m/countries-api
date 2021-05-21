@@ -11,7 +11,7 @@ function Header() {
       <Wrapper>
         <Link to={'/'} className="logo">Where in the world?</Link>
 
-        <div className="switch-mode">
+        <div className="switch-mode" onClick={() => alert('change')}>
           <BsFillBrightnessLowFill className="icon" />
           <span>Dark Mode</span>
         </div>

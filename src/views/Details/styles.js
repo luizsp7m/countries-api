@@ -31,6 +31,8 @@ export const Content = styled.div`
     justify-content: center;
     font-size: 1.4rem;
 
+    border: 1px solid rgba(0, 0, 0, .085);
+
     > .icon {
       margin-right: 1rem;
     }
@@ -119,6 +121,7 @@ export const About = styled.div`
         border-radius: .5rem;
         box-shadow: 0 0 1em rgba(0, 0, 0, .035);
         font-size: 1.4rem;
+        border: 1px solid rgba(0, 0, 0, .085);
       }
     }
   }

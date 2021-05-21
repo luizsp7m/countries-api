@@ -1,5 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const darkTheme = {
+  backgroundColor: 'hsl(207, 26%, 17%)',
+  primaryColor: 'hsl(209, 23%, 22%)',
+  textColor: 'hsl(0, 0%, 100%)',
+}
+
+export const lightTheme = {
+  backgroundColor: '#ecf0f1',
+  primaryColor: '#fff',
+  textColor: 'hsl(200, 15%, 8%)',
+}
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -12,16 +24,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --background-color: hsl(207, 26%, 17%);
-    --primary-color: hsl(209, 23%, 22%);
-    --text-color: hsl(0, 0%, 100%);
-
-    /* --dark-blue: hsl(209, 23%, 22%);
-    --very-dark-blue: hsl(207, 26%, 17%);
-    --text-dark: hsl(200, 15%, 8%);
-    --dark-gray: hsl(0, 0%, 52%);
-    --very-dark-gray: hsl(0, 0%, 98%);
-    --white: hsl(0, 0%, 100%); */
+    --background-color: ${props => props.theme.backgroundColor};
+    --primary-color: ${props => props.theme.primaryColor};
+    --text-color: ${props => props.theme.textColor};
   }
 
   body, input, button {

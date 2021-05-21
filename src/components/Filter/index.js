@@ -6,6 +6,7 @@ import { FilterContext } from '../../contexts/FilterContext';
 
 import { AiOutlineSearch } from 'react-icons/ai';
 
+
 function Filter() {
   const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 

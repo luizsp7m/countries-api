@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 
   > div.input-group {
     display: flex;
+    border: 1px solid rgba(0, 0, 0,.05);
 
     > button {
       height: 4.5rem;
@@ -24,7 +25,7 @@ export const Wrapper = styled.div`
       border-top-left-radius: .5rem;
       border-bottom-left-radius: .5rem;
       cursor: pointer;
-      border-right: 1px solid rgba(0, 0, 0, .1);
+      border-right: 1px solid rgba(0, 0, 0, .05);
       outline: 0;
 
       > .icon {
@@ -58,6 +59,7 @@ export const Wrapper = styled.div`
     padding: 0 2rem;
     background: var(--primary-color);
     color: var(--text-color);
+    border: 1px solid rgba(0, 0, 0,.05);
 
     -webkit-appearance: none;
     -moz-appearance: none;
