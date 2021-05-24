@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import App from './app';
+import { CustomThemeProvider } from './theme-provider';
+import Theme from './Theme';
+import Routes from './routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CustomThemeProvider>
+      <Theme>
+        <Routes />
+      </Theme>
+    </CustomThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
