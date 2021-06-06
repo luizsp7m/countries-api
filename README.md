@@ -2,7 +2,7 @@
 
 This is a solution to the [REST Countries API with color theme switcher](https://www.frontendmentor.io/solutions/countries-api-using-reactjs-cLRISRPUI).
 
-#### [Site URL](countries-api-rho.vercel.app) 
+#### [Site URL](https://countries-api-rho.vercel.app/) 
 #### [Solution](https://www.frontendmentor.io/solutions/countries-api-using-reactjs-cLRISRPUI)
 
 ### The challenge
