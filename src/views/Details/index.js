@@ -15,10 +15,13 @@ function Details({ match }) {
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
 
+  const [currencies, setCurrencies] = useState([]);
+  const [languages, setLanguages] = useState([]);
+
   async function loadDetails() {
     setLoading(true);
     await api.get(`/alpha/${match.params.code}`).then(response => {
-      setCountry(response.data);
+      setCountry(response.data[0]);
       setLoading(false);
     }).catch(err => {
       setRedirect(true);
@@ -28,6 +31,25 @@ function Details({ match }) {
   useEffect(() => {
     loadDetails();
   }, [match.params.code]);
+
+  useEffect(() => {
+    if(!loading) {
+      const arrayCurrencies = new Array();
+      const arrayLanguages = new Array();
+
+      for(let id in country.currencies) {
+        arrayCurrencies.push({ id, ...country.currencies[id] });
+      }
+
+      // for(let id in country.languages) {
+      //   console.log({ ...country.languages });
+      // }
+
+      // console.log(arrayLanguages);
+
+      setCurrencies(arrayCurrencies);
+    }
+  }, [loading]);
 
   return (
     <Fragment>
@@ -44,11 +66,11 @@ function Details({ match }) {
           {loading ? <h1 className="loading">Loading...</h1> : (
             <Grid>
               <Image>
-                <img src={country.flag} alt="Flag" />
+                <img src={country.flags.svg} alt="Flag" />
               </Image>
 
               <About>
-                <div className="country-name">{country.name}</div>
+                <div className="country-name">{country.name.common}</div>
 
                 <div className="card-container">
                   <div className="card-body">
@@ -79,15 +101,15 @@ function Details({ match }) {
                     </div>
 
                     <div className="card-text">
-                      <span>Currencies: </span> {country.currencies.map(currence => (
-                        <label key={currence.code}>{currence.name} </label>
-                      ))}
+                      <span>Currencies: </span> { currencies.map(currence => (
+                        <label key={currence.id}>{currence.name} </label>
+                      )) }
                     </div>
 
                     <div className="card-text">
-                      <span>Languages: </span> {country.languages.map(language => (
+                      {/* <span>Languages: </span> {country.languages.map(language => (
                         <label key={language.iso639_1}>{language.name} </label>
-                      ))}
+                      ))} */}
                     </div>
                   </div>
                 </div>
@@ -96,7 +118,7 @@ function Details({ match }) {
                   <h5>Border Countries: </h5>
 
                   <div className="countries-list">
-                    {country.borders.map(border => (
+                    { country.borders && country.borders.map(border => (
                       <Link to={`/${border}`} key={border}>{border}</Link>
                     ))}
                   </div>

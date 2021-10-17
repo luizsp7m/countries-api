@@ -15,13 +15,15 @@ import { FilterContext } from '../../contexts/FilterContext';
 function Home() {
   const { loading, countries } = useContext(FilterContext);
 
+  console.log(countries);
+
   return (
     <Container>
       <Header />
       <Filter />
       <Content>
         {loading ? <h1 className="loading">Loading...</h1> : countries.map((country, index) => (
-          <Link to={`/${country.alpha3Code}`} key={index}>
+          <Link to={`/${country.cca3}`} key={index}>
             <Card data={country} />
           </Link>
         ))}

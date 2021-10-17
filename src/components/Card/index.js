@@ -6,11 +6,11 @@ function Card({ data }) {
   return (
     <Container>
       <div className="flag-image">
-        <img src={data.flag} alt={data.name} />
+        <img src={data.flags.svg} alt={data.name.common} />
       </div>
 
       <div className="information">
-        <h1>{data.name}</h1>
+        <h1>{data.name.common}</h1>
         
         <span>
           <b>Population: </b> { data.population ? data.population.toLocaleString('pt-BR') : '-' } 
