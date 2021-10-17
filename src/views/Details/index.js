@@ -41,13 +41,15 @@ function Details({ match }) {
         arrayCurrencies.push({ id, ...country.currencies[id] });
       }
 
-      // for(let id in country.languages) {
-      //   console.log({ ...country.languages });
-      // }
-
-      // console.log(arrayLanguages);
+      for(let id in country.languages) {
+        arrayLanguages.push({
+          id,
+          name: country.languages[id]
+        });
+      }
 
       setCurrencies(arrayCurrencies);
+      setLanguages(arrayLanguages);
     }
   }, [loading]);
 
@@ -75,7 +77,7 @@ function Details({ match }) {
                 <div className="card-container">
                   <div className="card-body">
                     <div className="card-text">
-                      <span>Native Name: </span> <label>{country.nativeName}</label>
+                      <span>Native Name: </span> <label>{country.name.official}</label>
                     </div>
 
                     <div className="card-text">
@@ -96,9 +98,9 @@ function Details({ match }) {
                   </div>
 
                   <div className="card-body">
-                    <div className="card-text">
+                    {/* <div className="card-text">
                       <span>Top Level Domain: </span> <label>{country.topLevelDomain}</label>
-                    </div>
+                    </div> */}
 
                     <div className="card-text">
                       <span>Currencies: </span> { currencies.map(currence => (
@@ -107,9 +109,9 @@ function Details({ match }) {
                     </div>
 
                     <div className="card-text">
-                      {/* <span>Languages: </span> {country.languages.map(language => (
-                        <label key={language.iso639_1}>{language.name} </label>
-                      ))} */}
+                      <span>Languages: </span> {languages.map((language, index) => (
+                        <label key={language.id}>{language.name} {index < languages.length - 1 && '/ '}</label>
+                      ))}
                     </div>
                   </div>
                 </div>
